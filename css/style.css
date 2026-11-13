@@ -1,23 +1,37 @@
-body{
+
+body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 30px;
-    background: #f7f7f8;
+    background: linear-gradient(135deg, #d4fc79 5%, #96e6a1 55%, #84fab0 100%);
+    min-height: 100vh;
+    background-image: url('casey-horner-o0r5xzfkugq-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 header {
     text-align: center;
+    color: #1e3a34;
 }
 
 section {
     max-width: 400px;
     margin: 40px auto;
     padding: 45px;
-    background: rgb(237, 245, 206);
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.12);
     border-radius: 25px;
 }
 
-input, button, select{
+input,
+button,
+select {
     display: block;
     width: 100%;
     padding: 12px;
@@ -25,20 +39,36 @@ input, button, select{
     box-sizing: border-box;
     border-radius: 12px;
 
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 
 }
 
-label{
+label {
     display: block;
-    margin: 15px;
+    margin: 15px 0 5px 0;
+    font-weight: bold;
+    color: #1e3a34;
 }
 
-button{
+button {
+    margin-top: 25px;
     cursor: pointer;
+    background: #234e46;
+    color: #ffffff;
+    font-weight: bold;
+    border: none;
 }
 
 button:hover {
-  background-color: #38635c;
-  transform: translateY(-2px);
+    background-color: #38635c;
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(35, 78, 70, 0.3);
+}
+
+input:hover,
+select:hover {
+    background-color: #ffffff;
+    transform: translateY(-7px) scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }

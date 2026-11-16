@@ -19,7 +19,7 @@
             <h2>Plan Your Expenses</h2>
 
             <label for="distance">Travel distance (km)</label>
-            <input type="number" id="distance" placeholder="Enter distance"> 
+            <input type="number" id="distance" placeholder="Enter distance" min="0.1"> 
 
             <label for="Origin">Enter Origin</label>
             <input type="text" id="Origin" placeholder="Enter Origin of your journey">  
@@ -32,6 +32,11 @@
             <select id="vehicleType">
                 <option value="bike">Bike</option>
                 <option value="car">Car</option> 
+            </select>
+
+            <label for="vehicleModel">Select Vehicle Model</label>
+            <select id="vehicleModel">
+                <option value="">Choose your vehicle</option>
             </select>
             
             <button id="calculateBtn">Calculate Fuel</button>

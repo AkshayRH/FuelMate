@@ -17,10 +17,10 @@ header {
     color: #1e3a34;
 }
 
-section {
-    max-width: 420px;
-    margin: 40px 5;
-    padding: 45px;
+section { 
+    max-width: 340px;
+    margin: 0;
+    padding: 10px 30px 30px 30px;
     background: rgba(178, 168, 168, 0.45);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -69,6 +69,6 @@ button:hover {
 input:hover,
 select:hover {
     background-color: #ffffff;
-    transform: translateY(-7px) scale(1.02);
+    transform: translateY(-5px) scale(1.02);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }

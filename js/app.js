@@ -19,7 +19,56 @@ const vehicles = {
     ]
 };
 
+// Updated vehicle selection handling
 vehicleType.addEventListener("change", function () {
+    const selectedType = vehicleType.value;
+    // Clear previous options
+    vehicleModel.innerHTML = "";
+    // Get models for selected type, guard against undefined
+    const models = vehicles[selectedType] || [];
+    // Populate model select with readable names and mileage data
+    models.forEach(function (model) {
+        const option = document.createElement("option");
+        option.value = model.name; // use name as value
+        option.textContent = model.name;
+        // Store mileage for later lookup
+        option.dataset.mileage = model.mileage;
+        vehicleModel.appendChild(option);
+    });
+});
+
+calculateBtn.addEventListener("click", function () {
+    const from = origin.value.trim();
+    const to = destination.value.trim();
+    if (from === "" || to === "") {
+        alert("Enter origin and destination");
+        return;
+    }
+    const km = Number(distance.value);
+    if (km <= 0) {
+        alert("Enter Valid Km");
+        return;
+    }
+    const fuel = Number(fuelprice.value);
+    if (!Number.isFinite(fuel) || fuel <= 0) {
+        alert("Enter Valid price");
+        return;
+    }
+    // Determine selected vehicle model and its mileage
+    const selectedType = vehicleType.value;
+    const selectedModelName = vehicleModel.value;
+    const models = vehicles[selectedType] || [];
+    const selectedModel = models.find(m => m.name === selectedModelName);
+    const mileage = selectedModel ? selectedModel.mileage : "N/A";
+    // Build result string including mileage info
+    result.textContent =
+        "Origin: " + from +
+        " Destination: " + to +
+        " Distance: " + km + " km" +
+        " Vehicle: " + selectedModelName +
+        (mileage !== "N/A" ? " (Mileage: " + mileage + " km/l)" : "") +
+        " Fuel Price: " + fuel;
+});("change", function () {
     const selectedType = vehicleType.value;
 
     vehicleModel.innerHTML = "";

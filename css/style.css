@@ -1,8 +1,10 @@
-
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    padding: 30px;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
     background: linear-gradient(135deg, #d4fc79 5%, #96e6a1 55%, #84fab0 100%);
     min-height: 100vh;
     background-image: url('casey-horner-o0r5xzfkugq-unsplash.jpg');
@@ -17,10 +19,30 @@ header {
     color: #1e3a34;
 }
 
-section { 
-    max-width: 340px;
+header h1 {
+    margin: 0 0 4px 0;
+    font-size: 1.5rem;
+}
+
+header p {
+    margin: 0 0 12px 0;
+    font-size: 0.9rem;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px 0;
+}
+
+section {
+    max-width: 360px;
+    width: 100%;
+    box-sizing: border-box;
     margin: 0;
-    padding: 10px 30px 30px 30px;
+    padding: 16px 26px 18px 26px;
     background: rgba(178, 168, 168, 0.45);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
@@ -29,13 +51,18 @@ section {
     border-radius: 25px;
 }
 
+section h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+}
+
 input,
 button,
 select {
     display: block;
     width: 100%;
-    padding: 12px;
-    margin-top: 20px;
+    padding: 9px 11px;
+    margin-top: 0;
     box-sizing: border-box;
     border-radius: 12px;
 
@@ -46,18 +73,25 @@ select {
 
 label {
     display: block;
-    margin: 15px 0 5px 0;
+    margin: 9px 0 4px 0;
+    font-size: 0.88rem;
     font-weight: bold;
     color: #1e3a34;
 }
 
 button {
-    margin-top: 25px;
+    margin-top: 14px;
+    padding: 10px;
     cursor: pointer;
     background: #234e46;
     color: #ffffff;
     font-weight: bold;
     border: none;
+}
+
+#result {
+    margin: 8px 0 0 0;
+    font-size: 0.9rem;
 }
 
 button:hover {

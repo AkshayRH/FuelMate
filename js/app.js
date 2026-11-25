@@ -2,13 +2,21 @@ const calculateBtn = document.getElementById("calculateBtn");
 const origin = document.getElementById("Origin");
 const destination = document.getElementById("destination");
 const distance = document.getElementById("distance");
+const fuelprice = document.getElementById("fuelprice")
 const vehicleType = document.getElementById("vehicleType");
 const vehicleModel = document.getElementById("vehicleModel");
 const result = document.getElementById("result");
 
 const vehicles = {
-  bike: ["Tvs raider 125", "Tvs Apache Rtr #10"],
-  car: ["Maruti Swift", "Hyundai i20"],
+    bike: [
+        { name: "TVS Raider 125", mileage: 55 },
+        { name: "TVS Apache RTR 310", mileage: 30 }
+    ],
+
+    car: [
+        { name: "Maruti Swift", mileage: 20 },
+        { name: "Hyundai i20", mileage: 18 }
+    ]
 };
 
 vehicleType.addEventListener("change", function () {
@@ -43,6 +51,12 @@ calculateBtn.addEventListener("click", function () {
   }
   const vehicle = vehicleType.value;
 
+  const fuel = Number(fuelprice.value);
+  if(!Number.isFinite(fuel) || fuel<=98){
+    alert("Enter Valid price")
+    return;
+  }
+
   result.textContent =
     "Origin: " +
     from +
@@ -52,5 +66,6 @@ calculateBtn.addEventListener("click", function () {
     km +
     " km" +
     " Vehicle: " +
-    vehicle;
+    vehicle + 
+    "Fuel Price" + fuel;
 });

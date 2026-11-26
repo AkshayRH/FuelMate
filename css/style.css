@@ -91,6 +91,18 @@ button {
     border: none;
 }
 
+#resetBtn {
+    margin-top: 8px;
+    background: rgba(255, 255, 255, 0.35);
+    color: #1e3a34;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+#resetBtn:hover {
+    background-color: rgba(255, 255, 255, 0.65);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
 #result {
     margin: 8px 0 0 0;
     font-size: 0.9rem;

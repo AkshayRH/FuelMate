@@ -44,4 +44,15 @@
             mileageEl.textContent = data.mileage ? data.mileage + " km/l (" + data.type + ")" : data.type;
         }
     });
+
+    document.addEventListener("fuelReset", function () {
+        if (routeEl) routeEl.textContent = "Enter trip details to calculate";
+        if (costEl) costEl.textContent = "—";
+        if (costPerKmEl) costPerKmEl.textContent = "Cost per km";
+        if (fuelEl) fuelEl.textContent = "—";
+        if (fuelRateEl) fuelRateEl.textContent = "Fuel rate";
+        if (distanceEl) distanceEl.textContent = "—";
+        if (vehicleEl) vehicleEl.textContent = "—";
+        if (mileageEl) mileageEl.textContent = "Mileage";
+    });
 })();

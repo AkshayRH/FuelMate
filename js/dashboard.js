@@ -1,38 +1,47 @@
-/* dashboard.js – vehicle card selection & result sync */
+/* ============================================================
+   dashboard.js - Updates right-side dashboard on calculation
+   ============================================================ */
+
 (function () {
-    const cards = document.querySelectorAll(".vehicle-card");
-    const vehicleTypeSelect = document.getElementById("vehicleType");
-    const resultEl = document.getElementById("result");
+    const routeEl = document.getElementById("dashRoute");
+    const costEl = document.getElementById("dashCost");
+    const costPerKmEl = document.getElementById("dashCostPerKm");
+    const fuelEl = document.getElementById("dashFuel");
+    const fuelRateEl = document.getElementById("dashFuelRate");
+    const distanceEl = document.getElementById("dashDistance");
+    const vehicleEl = document.getElementById("dashVehicle");
+    const mileageEl = document.getElementById("dashMileage");
 
-    // Keep track of original result content (set by app.js)
-    const summaryResult = document.querySelector(".panel--summary #result");
+    document.addEventListener("fuelCalculated", function (event) {
+        const data = event.detail;
+        if (!data) return;
 
-    // Sync vehicle cards with the hidden <select id="vehicleType">
-    cards.forEach(function (card) {
-        card.addEventListener("click", function () {
-            cards.forEach(function (c) { c.classList.remove("vehicle-card--active"); });
-            card.classList.add("vehicle-card--active");
-
-            const type = card.dataset.type;
-            vehicleTypeSelect.value = type;
-            // Fire change event so app.js populates vehicleModel
-            vehicleTypeSelect.dispatchEvent(new Event("change"));
-        });
+        if (routeEl) {
+            routeEl.textContent = data.from + " -> " + data.to;
+        }
+        if (costEl) {
+            costEl.textContent = data.totalCost !== "N/A" ? "Rs. " + data.totalCost : "N/A";
+        }
+        if (costPerKmEl) {
+            const perKm = data.totalCost !== "N/A" && data.km > 0
+                ? (Number(data.totalCost) / data.km).toFixed(2)
+                : null;
+            costPerKmEl.textContent = perKm ? "Rs. " + perKm + " / km" : "-";
+        }
+        if (fuelEl) {
+            fuelEl.textContent = data.fuelNeeded !== "N/A" ? data.fuelNeeded + " L" : "N/A";
+        }
+        if (fuelRateEl) {
+            fuelRateEl.textContent = "Fuel @ Rs. " + data.fuel + " / L";
+        }
+        if (distanceEl) {
+            distanceEl.textContent = data.km + " km";
+        }
+        if (vehicleEl) {
+            vehicleEl.textContent = data.modelName;
+        }
+        if (mileageEl) {
+            mileageEl.textContent = data.mileage ? data.mileage + " km/l (" + data.type + ")" : data.type;
+        }
     });
-
-    // Mirror the left-panel result into the right summary panel
-    // by moving #result into the right panel after calculate
-    const calculateBtn = document.getElementById("calculateBtn");
-    if (calculateBtn) {
-        calculateBtn.addEventListener("click", function () {
-            // Give app.js a tick to update #result, then copy text
-            setTimeout(function () {
-                const resultText = resultEl ? resultEl.textContent : "";
-                const summaryBox = document.querySelector(".panel--summary .result-box");
-                if (summaryBox && resultText.trim()) {
-                    summaryBox.innerHTML = "<p style='margin:0'>" + resultText + "</p>";
-                }
-            }, 50);
-        });
-    }
 })();

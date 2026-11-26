@@ -95,12 +95,12 @@ calculateBtn.addEventListener("click", function () {
     const totalCost = mileage ? ((km / mileage) * fuel).toFixed(2) : "N/A";
 
     /* Populate result text (kept for compat) */
-    result.textContent =
-        "From " + from + " → " + to +
-        " | " + km + " km | " + modelName +
-        (mileage ? " (" + mileage + " km/l)" : "") +
-        " | Fuel: " + (fuelNeeded !== "N/A" ? fuelNeeded + " L" : "N/A") +
-        " | Cost: " + (totalCost !== "N/A" ? "₹" + totalCost : "N/A");
+    // result.textContent =
+    //     "From " + from + " → " + to +
+    //     " | " + km + " km | " + modelName +
+    //     (mileage ? " (" + mileage + " km/l)" : "") +
+    //     " | Fuel: " + (fuelNeeded !== "N/A" ? fuelNeeded + " L" : "N/A") +
+    //     " | Cost: " + (totalCost !== "N/A" ? "₹" + totalCost : "N/A");
 
     /* Fire custom event so dashboard.js can update summary cards */
     document.dispatchEvent(new CustomEvent("fuelCalculated", {

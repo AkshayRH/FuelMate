@@ -85,6 +85,10 @@ calculateBtn.addEventListener("click", function () {
         return;
     }
 
+    if(from==to){ // Avoid same orgin and destination
+        alert("Orgin and destination to be different") 
+    }
+
     /* Mileage lookup */
     const models = vehicles[type] || [];
     const selectedModel = models.find(m => m.name === modelName);
